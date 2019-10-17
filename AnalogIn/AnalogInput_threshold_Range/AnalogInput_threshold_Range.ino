@@ -14,7 +14,7 @@ void loop() {
   Serial.println(sensorValue);
   delay(20);
 
-  if (sensorValue > threshold1) {
+  if (sensorValue > threshold2 && sensorValue < threshold1) {
 
     digitalWrite(ledPin,HIGH);
     
@@ -25,4 +25,3 @@ void loop() {
 
   
 }
-

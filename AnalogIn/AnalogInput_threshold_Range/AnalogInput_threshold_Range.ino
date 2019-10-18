@@ -1,6 +1,6 @@
-int sensorPin = A0;
+int sensorPin = A0; 
 int ledPin = 13;
-int sensorValue = 0;
+int sensorValue = 0; 
 int threshold1 = 600;
 int threshold2 = 100;
 

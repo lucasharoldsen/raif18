@@ -1,25 +1,29 @@
 // Fade in and out
 
-int ledPin1 = 3;
-int counter1 = 127; // Start the counter in the middle of pwm range
-int fadeDirection1 = 1; // Controls direction of fade (1 or -1)
+int ledPin1 = 3; // analog output pin (digital pin with ~)
+int brightness = 0; //PWM output value between 0 and 255
+int fadeAmount = 1; //how much to fade LED by
 
 void setup(){
-  // No pinMode needed for analogWrite :)
+  // No pinMode needed for analogWrite
+  Serial.begin(9600);
 }
 
 void loop(){
 
-  // When we reach either end of the pwm range, reverse direction
-  if(counter1 == 0 || counter1 == 255){
-    fadeDirection1 *= -1; // multiply the current value of fadeDirection by -1
+  brightness = brightness + fadeAmount; //add fadeAmount to brightnes everytime it loops 
+
+  if (brightness == 0 || brightness == 255){ //when brightness is either 0 or 255, chnge the direction of fading
+    fadeAmount = -fadeAmount; //fadeAmount is now negative fadeAmount
   }
 
-  counter1 += fadeDirection1;  // add fadeDirection to current value of counter each loop
+  Serial.print(fadeAmount); //print the current fadeAmount Value
+  Serial.print(" ");        //separate the printed variables
+  Serial.println(brightness); //print the brightness value
+ 
+  
+  
 
-  analogWrite(ledPin1, counter1);
-  delay(20);
+  analogWrite(ledPin1, brightness); //output analog value to ledPin1
+  delay(30);
 }
-
-
-

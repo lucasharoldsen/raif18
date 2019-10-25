@@ -11,11 +11,13 @@ void setup(){
 void loop(){
 
 int sensorValue = analogRead(pot); // reading analog value form pin A0
-Serial.println(sensorValue);
+int outValue = map(sensorValue,0,1023,0,255); //mapping the value of sensor to PWM output
   
- int bright = map(sensorValue,0,1023,0,255); //mapping the value of sensor to PWM output
-  
-  analogWrite(ledPin1, bright); // analog output to bringness
+  analogWrite(ledPin1, outValue); // analog output to bringness
+
+  Serial.print("analogIN= "); //print analogIN= 
+  Serial.print(sensorValue); //print sensorValue on serial monitor
+  Serial.print("\t output= "); // insert space with "\t" and print output=
+  Serial.println(outValue); //print outValue
   delay(2);  // delay to make the fade visible
 }
-

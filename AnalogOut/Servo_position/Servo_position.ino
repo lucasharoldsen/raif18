@@ -1,4 +1,4 @@
-#include <Servo.h>
+#include <Servo.h>  // include servo library!
 
 Servo myservo;  // create servo object to control a servo
 int position1 = 0;  // variable to store the servo position
